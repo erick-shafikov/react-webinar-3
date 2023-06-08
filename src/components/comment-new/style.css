@@ -1,0 +1,11 @@
+.NewComment-container{
+  box-sizing: border-box;
+  padding-bottom: 100px;
+}
+
+.NewComment-header{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+}

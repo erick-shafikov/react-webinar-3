@@ -20,7 +20,7 @@ export default function listToTree(list, key = '_id') {
     }
 
     // Если элемент имеет родителя, то добавляем его в подчиненные родителя
-    if (item.parent?._id) {
+    if (item.parent?._id && item.parent?._type !== 'article') {
       // Если родителя ещё нет в индексе, то индекс создаётся, ведь _id родителя известен
       if (!trees[item.parent._id]) trees[item.parent[key]] = { children: [] };
       // Добавления в подчиненные родителя

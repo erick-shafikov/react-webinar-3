@@ -49,7 +49,7 @@ function Login() {
         const back = location.state?.back && location.state?.back !== location.pathname
           ? location.state?.back
           : '/';
-        navigate(back);
+        navigate(back, {state:{from: location.state.from}});
       });
 
     }, [data, location.state])

@@ -1,0 +1,51 @@
+/* .List-item, .List-item:first-child{
+  border: none;
+} */
+
+.Comment-item{
+  margin-bottom: 30px;
+}
+
+.Comment-item-author{
+  display: inline;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.Comment-item-date{
+  display: inline;
+  margin-left: 10px;
+
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #666666;
+}
+
+.Comment-item-text{
+  margin: 10px 0;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  word-wrap: break-word;
+}
+
+.Comment-item-button{
+  all: unset;
+  cursor: pointer;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #0087E9;
+}
+
+.matched{
+  color: #666666;
+}
