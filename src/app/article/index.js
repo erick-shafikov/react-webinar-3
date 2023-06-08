@@ -14,7 +14,7 @@ import TopHead from "../../containers/top-head";
 import {useDispatch, useSelector as useSelectorRedux} from 'react-redux';
 import shallowequal from "shallowequal";
 import articleActions from '../../store-redux/article/actions';
-import Comments from '../comments';
+import Comments from '../../containers/comments';
 
 function Article() {
   const store = useStore();
