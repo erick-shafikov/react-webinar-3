@@ -19,6 +19,7 @@ function Comments(){
   const { id } = useParams();
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate()
   
   const selectRedux = reduxSelector(state =>({
     comments: state.comments.commentsList,
@@ -38,12 +39,15 @@ function Comments(){
     switchActive: useCallback(id => dispatch(commentsActions.switchActiveField(id)), [])
   }
 
-  
+  console.log(location.state)
 
   useEffect(()=>{
     if(location.state?.from) {
       callbacks.switchActive(location.state?.from)
     };
+
+    navigate(location.pathname, {})
+
   }, [])
   
   useInit(() => {
@@ -76,6 +80,7 @@ function Comments(){
             isSession={select.exists} 
             waiting={selectRedux.waiting} 
             addNewComment={callbacks.addNewComment}
+            current={selectRedux.activeField}
           /> 
         : <div style={{height:'70px'}}></div>}
       </CommentsLayout>

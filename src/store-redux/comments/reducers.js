@@ -25,7 +25,7 @@ function reducer(state = initialState, action) {
       return {...state, waiting: true};
       
     case "comments/switch-active":
-      return {...state, activeField: action.payload}
+      return {...state, activeField: action.payload, waiting: false}
 
     default:
       return state;
