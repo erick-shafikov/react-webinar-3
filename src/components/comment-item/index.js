@@ -8,12 +8,6 @@ import './style.css'
 function CommentItem({comment, active, switchActive, exists, addAnswer, username, current}){
   const cn = bem('Comment');
 
-  // const ref = useRef();
-
-  // useEffect(()=>{
-  //   if(current === comment._id) ref.current.focus()
-  // }, [current])
-
   const onClickHandler = () => {
     switchActive(comment._id)
   }
@@ -31,6 +25,7 @@ function CommentItem({comment, active, switchActive, exists, addAnswer, username
           id={comment._id} 
           addAnswer={addAnswer} 
           switchActive={switchActive}
+          current={current}
         /> 
       }
   </div>

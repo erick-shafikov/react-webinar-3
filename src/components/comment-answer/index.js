@@ -6,7 +6,7 @@ import './style.css'
 import {cn as bem} from '@bem-react/classname';
 
 
-function CommentAnswer({isSession, addAnswer, id, switchActive}){
+function CommentAnswer({isSession, addAnswer, id, switchActive, current}){
   const cn = bem('Answer');
 
   const [text, setText] = useState('');
@@ -34,7 +34,7 @@ function CommentAnswer({isSession, addAnswer, id, switchActive}){
     {isSession 
       ? <>
           <h3 className={cn('header')}>Новый ответ</h3>
-          <CommentTextArea text={text} onChangeHandler={onChangeHandler}/>
+          <CommentTextArea text={text} onChangeHandler={onChangeHandler} isFocus={id === current}/>
           <button className={cn('button')} onClick={onSubmitHandler}>Отправить</button>
           <button onClick={declineHandler}>Отмена</button>
         </> 
