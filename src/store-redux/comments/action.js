@@ -4,14 +4,14 @@ export default {
    * @param id
    * @return {Function}
    */
-  loadComments: (id) => {
+  loadComments: (id, from) => {
     return async (dispatch, getState, services) => {
       dispatch({type: 'comments/load-start'});
       try {
         const res = await services.api.request({
           url: `/api/v1/comments/?search[parent]=${id}&limit=*&fields=*,author(profile)`
         });
-        dispatch({type: 'comments/load-success', payload: {data: res.data.result.items}});
+        dispatch({type: 'comments/load-success', payload: {data: res.data.result.items, from}});
 
       } catch (e) {
         dispatch({type: 'comments/load-error'});
@@ -46,5 +46,13 @@ export default {
 
   switchActiveField: (id) => {
     return {type: "comments/switch-active", payload: id}
+  },
+
+  addAnswer: (parentID) => {
+    return {type: "comments/open-form", payload: parentID}
+  },
+
+  cancelAnswer: () => {
+    return {type: "comments/close-form"}
   }
 }
