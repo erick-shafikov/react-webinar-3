@@ -80,7 +80,7 @@ function Comments(){
             isSession={select.exists} 
             waiting={selectRedux.waiting} 
             addNewComment={callbacks.addNewComment}
-            current={selectRedux.activeField}
+            isFocus={selectRedux.activeField === 'new'}
           /> 
         : <div style={{height:'70px'}}></div>}
       </CommentsLayout>

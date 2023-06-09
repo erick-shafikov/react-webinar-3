@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import './style.css'
 
 
-function NewComment({isSession, addNewComment, current}){
+function NewComment({isSession, addNewComment, isFocus}){
   const { id } = useParams();
   const location = useLocation()
   const [text, setText] = useState('');
@@ -29,7 +29,7 @@ function NewComment({isSession, addNewComment, current}){
     {isSession 
       ? <>
           <h3 className="NewComment-header">Новый комментарий</h3>
-          <CommentTextArea onChangeHandler={onChangeHandler} text={text} isFocus={current=== 'new'}/>
+          <CommentTextArea onChangeHandler={onChangeHandler} text={text} isFocus={isFocus}/>
           <button onClick={onSubmitHandler}>Отправить</button>
         </> 
       : <>
@@ -42,7 +42,7 @@ function NewComment({isSession, addNewComment, current}){
 NewComment.propTypes = {
   addNewComment: PropTypes.func,
   isSession: PropTypes.bool,
-  current: PropTypes.string
+  isFocus: PropTypes.bool
 };
 
 NewComment.defaultProps = {
