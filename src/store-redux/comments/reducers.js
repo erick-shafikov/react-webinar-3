@@ -2,10 +2,10 @@
 
 export const getCommentForm = (_id)=> ({
   _id: `temp_id`, 
-  text: 'NEW_COMMENT', 
+  text: '_', 
   parent : {_id: _id, _type: 'comment',},
   _type: 'answer',
-  dateCreate: '2023-06-09T16:34:57.361Z'
+  dateCreate: ' '
 })
 const initialState = {
   commentsList: [],
@@ -14,7 +14,6 @@ const initialState = {
   activeField: 'new'
 }
 
-// Обработчик действий
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "comments/load-start":
@@ -22,7 +21,7 @@ function reducer(state = initialState, action) {
 
     case "comments/load-success":
       if(!!action.payload.from && action.payload.from !== 'new') return { ...state, commentsList: [...action.payload.data, getCommentForm(action.payload.from)], waiting: false};
-      return { ...state, commentsList: [...action.payload.data], waiting: false};
+      return { ...state, commentsList: action.payload.data, waiting: false, activeField: 'new'};
 
     case "comments/load-error":
       return { ...state, commentsList: {}, waiting: false};

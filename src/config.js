@@ -17,6 +17,10 @@ const config = {
   },
   api: {
     baseUrl: ''
+  },
+
+  translate: {
+    local: navigator.language.slice(0,2)
   }
 }
 
