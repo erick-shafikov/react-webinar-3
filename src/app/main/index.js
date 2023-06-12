@@ -13,6 +13,7 @@ import TopHead from "../../containers/top-head";
 function Main() {
 
   const store = useStore();
+  const {t, lang} = useTranslate();
 
   useInit(async () => {
     await Promise.all([
@@ -21,7 +22,6 @@ function Main() {
     ]);
   }, [], true);
 
-  const {t} = useTranslate();
 
   return (
     <PageLayout>

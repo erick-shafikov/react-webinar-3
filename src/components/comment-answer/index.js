@@ -25,11 +25,12 @@ function CommentAnswer({isSession, addNewComment, switchActive, cancelAnswer, pa
   const onSubmitHandler = () =>{
     const str = text.trim();
 
-    if(str !== '') addNewComment(str, parentId, 'comment');
-
-    setText('');
-    switchActive('new')
-    navigate(location.pathname, {})
+    if(str !== '') {
+      addNewComment(str, parentId, 'comment');
+      setText('');
+      switchActive('new')
+      navigate(location.pathname, {})
+    }
   };
 
   const declineHandler = () =>{

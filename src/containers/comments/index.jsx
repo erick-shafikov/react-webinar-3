@@ -59,7 +59,7 @@ function Comments(){
   }, [selectRedux.newComment, select.exists]);
 
 
-  const comments = useMemo(() => treeToList(listToTree(selectRedux.comments, 'commentaries'), (item, level) => ({
+  const comments = useMemo(() => treeToList(listToTree(selectRedux.comments, 'comment'), (item, level) => ({
     _id: item._id, 
     level, 
     text: item.text, 
@@ -83,6 +83,8 @@ function Comments(){
       />
     ), [comments, selectRedux.activeField]),
   };
+
+  console.log(selectRedux.comments)
 
   return (
     <Spinner active={waiting}>

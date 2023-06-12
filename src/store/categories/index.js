@@ -24,7 +24,7 @@ class CategoriesState extends StoreModule {
     this.setState({...this.getState(), waiting: true}, 'Ожидание загрузки категорий');
 
     const res = await this.services.api.request({
-      url: `/api/v1/categories?fields=_id,title,parent(_id)&limit=*`
+      url: `/api/v1/categories?fields=_id,title,parent(_id),parent(_type)&limit=*`
     });
 
     // Товар загружен успешно
