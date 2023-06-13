@@ -18,6 +18,7 @@ class I18n {
     this.services.api.setHeader('Accept-Language', this._lang);
     this.services.store.actions.catalog.initParams()
     this.services.store.actions.session.remind();
+    this.services.store.actions.categories.load();
   }
 
   get lang(){
