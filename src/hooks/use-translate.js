@@ -2,12 +2,9 @@ import {useCallback, useContext, useState, useMemo, useEffect, useSate} from "re
 // import useStore from "../store/use-store";
 // import useSelector from "../store/use-selector";
 // import translate from "../i18n/translate";
-import {I18nContext} from "../i18n/context";
 import useServices from "./use-services";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import useStore from "./use-store";
-import articleActions from '../store-redux/article/actions'
-import { useDispatch } from "react-redux";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+
 
 
 /**
@@ -29,10 +26,13 @@ export default function useTranslate() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   let lang = translateService.lang;
+  const location = useLocation();
+  const navigate = useNavigate()
   const [_, setState] = useState(lang);
 
   useEffect(()=>{
-    setSearchParams({lang})
+    const prevState = location.state;
+    setSearchParams({lang}, {state: prevState})
   }, [])
 
   const t = useCallback((x, y) => {
@@ -42,7 +42,9 @@ export default function useTranslate() {
   const setLang = useCallback(newLang => {
     translateService.lang = newLang
     setState(newLang);
-    setSearchParams({lang:newLang})
+    setSearchParams({lang:newLang});
+    const prevState = location.state
+    navigate(location.pathname, {state: prevState})
   }, [lang])
   
 
