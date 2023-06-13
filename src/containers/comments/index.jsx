@@ -84,8 +84,6 @@ function Comments(){
     ), [comments, selectRedux.activeField]),
   };
 
-  console.log(selectRedux.comments)
-
   return (
     <Spinner active={waiting}>
       <CommentsLayout count={selectRedux.activeField === 'new'? comments.length : comments.length-1}>

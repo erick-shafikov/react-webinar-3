@@ -27,9 +27,7 @@ export default function useTranslate() {
 
   const translateService = useServices().translate;
 
-  const dispatch = useDispatch();
-  const [, setSearchParams] = useSearchParams();
-  const params = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   let lang = translateService.lang;
   const [_, setState] = useState(lang);
 
@@ -45,7 +43,6 @@ export default function useTranslate() {
     translateService.lang = newLang
     setState(newLang);
     setSearchParams({lang:newLang})
-    dispatch(articleActions.load(params.id));
   }, [lang])
   
 
