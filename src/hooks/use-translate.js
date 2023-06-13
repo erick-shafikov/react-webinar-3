@@ -30,8 +30,7 @@ export default function useTranslate() {
   const dispatch = useDispatch();
   const params = useParams();
   let lang = translateService.lang;
-  const [_, setState] = useState(lang);
-  const store = useStore();
+  const [state, setState] = useState(lang);
 
   const t = useCallback((x, y) => {
     return translateService.translate(lang, x, y)
@@ -40,9 +39,8 @@ export default function useTranslate() {
   const setLang = useCallback(newLang => {
     translateService.lang = newLang
     setState(newLang);
-    store.actions.catalog.initParams();
-    store.actions.categories.load();
     dispatch(articleActions.load(params.id));
+    lang = state
   }, [lang])
   
 
